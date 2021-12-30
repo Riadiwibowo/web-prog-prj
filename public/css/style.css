@@ -118,6 +118,44 @@ body {
     margin-top: 10px;
 }
 
+/* homeAdmin-start */
+.product-container {
+    width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.product-row {
+    margin-top: 0;
+    padding: 0;
+}
+
+.product-detail {
+    background-color: #a84cac;
+    width: 100%;
+}
+.btn-admin {
+    background-color: black;
+    margin-left: 10ps;
+
+    margin-top: 12px;
+    padding: 6px 12px;
+}
+.btn-updt {
+    border-radius: 2;
+
+    font-size: 1rem;
+
+    border: 1px solid transparent;
+}
+.btn-dlt {
+    border-radius: 2;
+
+    font-size: 1rem;
+
+    border: 1px solid transparent;
+}
 /* footer */
 #footer {
     min-height: 30px;

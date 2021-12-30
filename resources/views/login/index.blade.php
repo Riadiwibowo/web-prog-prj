@@ -16,7 +16,7 @@
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">View</a></li>
-                    <li><a href="/login">Login</a></li>
+                    <li><a href="/homeAdmin">Login</a></li>
                     <li><a href="/register">Register</a></li>
                 </ul>
             </nav>
