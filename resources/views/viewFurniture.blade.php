@@ -26,6 +26,6 @@
 @else
 <td>No Product Founds</td>
 @endif  
-    </div> 
-</div>
+</div> 
+
 @endsection
