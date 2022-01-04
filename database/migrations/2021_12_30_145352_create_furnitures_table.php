@@ -14,11 +14,11 @@ class CreateFurnituresTable extends Migration
     public function up()
     {
         Schema::create('furnitures', function (Blueprint $table) {
-            $table->id();
-            // $table->string('name', 255);
-            // $table->string('type', 255);
-            // $table->string('color', 255);
-            $table->timestamps();
+            $table->id()->autoIncrement();
+            $table->string('name', 15);
+            $table->integer('price');
+            $table->string('type');
+            $table->string('color');
         });
     }
 

@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ViewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +20,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/', [ViewController::class, 'index']);
+
+Route::get('/viewFurniture', [ViewController::class, 'index1']);
+
 
 Route::get('/register', function () {
     return view('register');
 });
+
+Route::get('/add', function () {
+    return view('add');
+});
+
+Route::get('/show', [ProductController::class, 'index']);
+
+Route::post('/add', [ProductController::class, 'upload']);
 
 Route::get('/homeAdmin', function () {
     return view('homeAdmin');
