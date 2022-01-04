@@ -5,7 +5,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> --}}
 
 <div class="text-center">
-    <h3>Welcome to JH Furniture</h3>
+    <h3>View Furniture</h3>
 </div>
 <div class="row justify-content-center" >
 @if ($pr->count())
@@ -17,13 +17,11 @@
                 <h5 class="card-title"> {{ $p->name }} </h5>
                 <p class="card-text"> {{ $p->price }} </p>
                 <div class="btn-admin">
-                    <button class="btn-updt">Update</button>
-                    <button class="btn-dlt">Delete</button>
+                    <button class="btn-add">Add To Cart</button>
                 </div>
             </div>
         </div>
     </div>
-    
 @endforeach   
 @else
 <td>No Product Founds</td>

@@ -41,4 +41,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function furniture(){
+        return $this->belongsTo(Product::class);
+    }
+    public function transaction(){
+        return $this->hasMany(transaction::class);
+    }
 }
