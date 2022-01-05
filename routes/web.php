@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
-});
+}); 
 Route::get('/', [ViewController::class, 'index']);
 
 Route::get('/viewFurniture', [ViewController::class, 'index1']);
@@ -31,23 +31,23 @@ Route::get('/viewFurniture', [ViewController::class, 'index1']);
 
 
 
-Route::get('/add', function () {
-    return view('add');
-});
+
 Route::middleware(['auth'])->group(function(){
-    Route::middleware(['admin'])->group(function(){
+    Route::middleware(['admin:1'])->group(function(){
         Route::get('/add', function () {
             return view('add');
         });
+        Route::get('/admin', function () {
+            return view('admin');
+        });
         Route::get('/show', [ProductController::class, 'index']);
-
-        Route::post('/add', [ProductController::class, 'upload']);     
+    
+        Route::post('/add', [ProductController::class, 'upload']);
     });
 });
 
-Route::get('/homeAdmin', function () {
-    return view('homeAdmin');
-});
+Route::get('/viewDetail/{id}', [viewDetailController::class, 'index'])->name('home');     
+
 
 Route::get('/login', [LoginController::class, 'index']);
 
@@ -56,5 +56,6 @@ Auth::routes();
 
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/home', [HomeController::class, 'index2'])->name('home');
 
-Route::get('/viewDetail/{id}', [viewDetailController::class, 'index'])->name('home');
+

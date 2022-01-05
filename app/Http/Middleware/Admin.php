@@ -15,9 +15,10 @@ class Admin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, $role)
     {
-        if(Auth()->user() && Auth()->user()->name === 'admin'){
+        // dd(Auth()->user()->role, $role);
+        if(Auth()->user() && Auth()->user()->role == $role){
             return $next($request);
         }
 
