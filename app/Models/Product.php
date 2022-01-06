@@ -17,4 +17,5 @@ class Product extends Model
     public function transactiondetail(){
         return $this->hasMany(TransactionDetail::class);
     }
+    protected $fillable = ['name','price','type','color'];  
 }

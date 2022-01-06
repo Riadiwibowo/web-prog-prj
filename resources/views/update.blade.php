@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyProject</title>
     <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="<?php echo asset('css/style.css')?>" type="text/css">
 </head>
 <body>
     <!-- nav section -->
@@ -27,22 +28,22 @@
     <section id="middle">
         <div class="middle-container">
             <div class="header-login">
-                <h3>Add Furniture</h3>
+                <h3>Update Furniture</h3>
             </div>
             <div class="login">
-                <form action="/add" method="POST" enctype="multipart/form-data"> 
+                <form action="{{ url('update',$pr->id) }}" method="POST" enctype="multipart/form-data"> 
                     @csrf
                     <div class="input">
                         <label for="name">Name</label>
-                        <input type="text" class="inputLength" id="name" placeholder="Enter furniture's name" name="name">
+                        <input type="text" class="inputLength" id="name" placeholder="Enter furniture's name" name="name" value="{{$pr->name}}">
                     </div>
                     <div class="input">
                         <label for="price">Price</label>
-                        <input type="number" class="inputLength" id="price" placeholder="Enter furniture's price" name="price">
+                        <input type="number" class="inputLength" id="price" placeholder="Enter furniture's price" name="price" value="{{$pr->price}}">
                     </div>
                     <div class="input">
                         <label for="type">Type</label>
-                        <select name="type" id="type">
+                        <select name="type" id="type" value="{{$pr->type}}">
                             <option value="table">table</option>
                             <option value="chair">chair</option>
                             <option value="lamp">lamp</option>
@@ -50,24 +51,18 @@
                     </div>
                     <div class="input">
                         <label for="color">Color</label>
-                        <select name="color" id="color">
+                        <select name="color" id="color" value="{{$pr->color}}">
                             <option value="white">white</option>
                             <option value="black">black</option>
                         </select>
                     </div>
                     <label for="image">Gambar</label>
-                    <input type="file" name="image" id="image">
-                    <button class="btn">Add Furniture</button>
+                    <input type="file" name="image" id="image" value="{{$pr->image}}">
+                    <button class="btn">Update Furniture</button>
                 </form>
             </div>
         </div>  
     </section>
-
-    @if(session()->has('sukses'))
-    <h4>{{session('sukses')}}</h4>
-    @elseif(session()->has('error'))
-    <h4>{{session('error')}}</h4>
-    @endif
 
     <!-- footer -->
     <section id="footer">

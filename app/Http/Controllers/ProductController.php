@@ -11,7 +11,21 @@ class ProductController extends Controller
 {
     public function index(){
         $prod = Product::get();
-        return view('show', ['pr' => $prod]); 
+        return view('home', ['pr' => $prod]); 
+    }
+
+    public function updateCheck($id){
+        $prod = Product::findorfail($id);
+        return view('update', ['pr' => $prod]);
+    }
+
+    public function update(Request $request, $id){
+        $prod = Product::findorfail($id);
+        $prod->update($request->all());
+        $path = $request->file('image')->store('public');
+        $prod->path = $path;
+        $prod->save();
+        return redirect('home');
     }
 
     public function upload(Request$request){
