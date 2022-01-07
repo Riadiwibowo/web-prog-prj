@@ -9,19 +9,19 @@
     @if ($pr->count())
     @foreach($pr as $p)
         <div class="col-md-3">
-            <div class="card text-white text-center bg-dark" style="width: 18rem;">
+            <div class="card text-white text-center bg-dark" style="width: 16rem;">
+                <a href="{{url('viewDetail')}}/{{$p->id}}" >
+                    <img src={{Storage::url( $p->path)}} alt="1" class="img-fluid"> 
+                </a> 
                 <div class="card-body ">
-                    <a href="{{url('viewDetail')}}/{{$p->id}}" >
-                        <img src="{{ Storage::url($p->path) }}" alt=""> 
-                    </a> 
                     <h5 class="card-title"> {{ $p->name }} </h5>
                     <p class="card-text"> {{ $p->price }} </p>
                     <p class="card-text"> {{ $p->type }} </p>
                     @auth
                     {{-- bagian middleware button untuk pengunjung yang mempunyai role admin --}}
                     @if (Auth::user()->role=='1')
-                    <div class="">
-                        <a href="{{ url('update', $p->id) }}">Update</a>
+                    <div class="btn-admin">
+                        <button class="btn-updt"><a href="{{ url('update', $p->id) }}">Update</a></button>
                         <button class="btn-dlt">Delete</button>
                     </div>
                     {{-- bagian middleware button untuk pengunjung member --}}

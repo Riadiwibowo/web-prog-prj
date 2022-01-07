@@ -26,7 +26,7 @@ class AddPathToFurnitures extends Migration
     public function down()
     {
         Schema::table('furnitures', function (Blueprint $table) {
-            $table->dropColumn('path');
+            $table->dropIfExists('path');
         });
     }
 }

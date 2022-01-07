@@ -43,10 +43,19 @@
 </head>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
+        @guest
         <a class="navbar-brand" href="/ ">Project-Store</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        @else
+        <a class="navbar-brand" href="/home ">Project-Store</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        @endguest
+        
+        
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             
             <!-- Right Side Of Navbar -->

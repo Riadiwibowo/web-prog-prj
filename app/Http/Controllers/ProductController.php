@@ -48,12 +48,14 @@ class ProductController extends Controller
         $prod->name = $request->name;
         $prod->price = $request->price;
         $prod->type = $request->type;
-        $prod->color = $request->color;
+        $prod->color = $request->color;                                                                 
 
         $path = $request->file('image')->store('public');
         $prod->path = $path;
 
+        
         $prod->save();
         return redirect()->back()->with('sukses','product data has been uploaded');
     }
 }
+                                
