@@ -16,7 +16,7 @@ class ViewController extends Controller
 
     public function index1(){
         $randomprod = view::inRandomOrder()->take(4)->get();
-        return view('viewFurniture', ['pr' => $randomprod]); 
+        return view('furnitures.index', ['pr' => $randomprod]); 
     }
 
     

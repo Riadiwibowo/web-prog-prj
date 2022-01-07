@@ -11,7 +11,7 @@ class viewDetailController extends Controller
 
     public function index($id)
     {
-        $product = Product::where('id', $id)->first(); 
-        return view('viewDetail', ['product' => $product]);
+        $prod = Product::where('id', $id)->first(); 
+        return view('furnitures.detail', ['pr' => $prod]);
     }
 }

@@ -68,7 +68,7 @@
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="/viewFurniture">View</a>
+                    <a class="nav-link" href="/furnitures">View</a>
                 </li>
                 @if (Route::has('login'))
                     <li class="nav-item">
@@ -87,7 +87,7 @@
                 <a class="nav-link active" aria-current="page" href="/home">Home</a>
             </li>        
             <li class="nav-item">
-                <a class="nav-link" href="/viewFurniture">View</a>
+                <a class="nav-link" href="/furnitures">View</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/home">Profile</a>

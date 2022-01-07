@@ -12,7 +12,7 @@
     @foreach($pr as $p)
         <div class="col-md-3">
             <div class="card text-white text-center bg-dark" style="width: 16rem;">
-                <a href="{{url('viewDetail')}}/{{$p->id}}" >
+                <a href="{{url('furnitures')}}/{{$p->id}}" >
                     <img src={{Storage::url( $p->path)}} alt="1" class="img-fluid"> 
                 </a> 
                 <div class="card-body ">

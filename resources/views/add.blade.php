@@ -6,7 +6,7 @@
 </div>
 <div class="row justify-content-center">
         <div class="col-md-5">
-            <div class="card justify-content-center">
+            <div class="card ">
                 <div class="card-body">
                     <form action="/add" method="POST" enctype="multipart/form-data" class="align-items-center"> 
                         @csrf
