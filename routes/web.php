@@ -38,12 +38,15 @@ Route::middleware(['auth'])->group(function(){
             return view('add');
         });
 
+        Route::post('/add', [ProductController::class, 'upload']);
+
         Route::get('/update/{id}',[ProductController::class, 'updateCheck']);
 
-        Route::post('/add', [ProductController::class, 'upload']);
-        
         Route::post('/update/{id}', [ProductController::class, 'update']);
 
+        Route::post('/delete/{id}', [ProductController::class, 'delete']);
+
+        Route::get('', [viewDetailController::class, 'previous']);     
     });
 });
 

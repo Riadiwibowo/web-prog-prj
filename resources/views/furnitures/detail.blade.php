@@ -46,7 +46,9 @@
                 </div>    
             </div>
             <div class="text-center">
-                <button class="btn-previous">Previous</button>
+                <form action="{{url()->previous()}}" method="GET" enctype="multipart/form-data"> 
+                    <button class="btn-previous">Previous</button>
+                </form>
                 @guest
                 <button class="btn-add">Add To Cart</button>
             </div>

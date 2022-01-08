@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Unique;
 
 class ProductController extends Controller
@@ -25,6 +26,11 @@ class ProductController extends Controller
         $path = $request->file('image')->store('public');
         $prod->path = $path;
         $prod->save();
+        return redirect('home');
+    }
+
+    public function delete($id){
+        DB::table('furnitures')->where('id', $id)->delete();
         return redirect('home');
     }
 
@@ -53,7 +59,6 @@ class ProductController extends Controller
         $path = $request->file('image')->store('public');
         $prod->path = $path;
 
-        
         $prod->save();
         return redirect()->back()->with('sukses','product data has been uploaded');
     }
