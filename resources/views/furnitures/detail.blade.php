@@ -42,31 +42,29 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="btn-admin">
-                        <button class="btn-previous">Previous</button>
-                    @auth
-                    {{-- bagian middleware button untuk pengunjung yang mempunyai role admin --}}
-                    @if (Auth::user()->role=='1')
-                    
-                        <button class="btn-updt"><a href="{{ url('update', $pr->id) }}">Update</a></button>
-                        <button class="btn-dlt">Delete</button>
-                    </div>
-                    {{-- bagian middleware button untuk pengunjung member --}}
-                    @else
-                    
-                        <button class="btn-add">Add To Cart</button>
-                    </div>  
-                    @endif
-                    @endauth
-                </div>
-                
+
+                </div>    
             </div>
+            <div class="text-center">
+                <button class="btn-previous">Previous</button>
+                @guest
+                <button class="btn-add">Add To Cart</button>
+            </div>
+                @else
+                @auth  
+                @if (Auth::user()->role=='1')
+                <button class="btn-updt"><a href="{{ url('update', $pr->id) }}">Update</a></button>
+                <button class="btn-dlt">Delete</button>
+            </div>
+                @else
+                <button class="btn-add">Add To Cart</button>
+            </div>
+                @endif
+                @endauth  
+                @endguest
         </div>
     </div> 
-
 </div>
-
-
 @endsection
 
 
