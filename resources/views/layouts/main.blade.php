@@ -90,11 +90,12 @@
                 <a class="nav-link" href="/furnitures">View</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/home">Profile</a>
+                {{-- <a class="nav-link" href="{{url('profile')}}/{{ Auth::user()->name }}">Profile</a> --}}
+                <a class="nav-link" href="{{url('profile')}}/{{  Auth::user()->id}}">Profile</a>
             </li>
-            @if (Auth::user()->role=='1')
+            @if (Auth::user()->role=='admin')
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{URL('add')}}">Add Furniture</a>
+                <a class="nav-link active" aria-current="page" href="{{url('add')}}">Add Furniture</a>
             </li>
             @else
             <li class="nav-item">

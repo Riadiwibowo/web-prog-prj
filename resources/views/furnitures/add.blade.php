@@ -10,7 +10,6 @@
                 <div class="card-body">
                     <form action="/add" method="POST" enctype="multipart/form-data" class="align-items-center"> 
                         @csrf
-                        
                         <div class="form-group row">
                             <label for="name" class="col-sm-2 col-form-label">Name</label>
                             <div class="col-sm-10">
@@ -27,7 +26,7 @@
                         <div class="form-group row">
                             <label for="type" class="col-sm-2 col-form-label">Type</label>
                             <div class="col-sm-10">
-                                <select name="type" id="type">
+                                <select name="type" class="form-control" id="type">
                                     <option value="table">table</option>
                                     <option value="chair">chair</option>
                                     <option value="lamp">lamp</option>
@@ -38,7 +37,7 @@
                         <div class="form-group row">
                             <label for="color"class="col-sm-2 col-form-label">Color</label>
                             <div class="col-sm-10">
-                                <select name="color" id="color">
+                                <select name="color" class="form-control" id="color">
                                     <option value="white">white</option>
                                     <option value="black">black</option>
                                 </select>
@@ -48,7 +47,7 @@
                         <div class="form-group row">
                             <label for="image"class="col-sm-2 col-form-label">Gambar</label>
                             <div class="col-sm-10">
-                                <input type="file" name="image" id="image" style="width: 18rem;">
+                                <input type="file" class="form-control" name="image" id="image">
                             </div> 
                         </div>
                         <div class="text-center">
@@ -59,7 +58,6 @@
                 </div>
             </div>
         </div> 
-
 </div>
 
 

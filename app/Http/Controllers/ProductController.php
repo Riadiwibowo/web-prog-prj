@@ -4,19 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Unique;
 
 class ProductController extends Controller
 {
     public function index(){
-        $prod = Product::get();
-        return view('home', ['pr' => $prod]); 
+        return view('furnitures.add');
     }
 
     public function updateCheck($id){
         $prod = Product::findorfail($id);
-        return view('update', ['pr' => $prod]);
+        return view('furnitures.update', ['pr' => $prod]);
     }
 
     public function update(Request $request, $id){
@@ -25,6 +25,11 @@ class ProductController extends Controller
         $path = $request->file('image')->store('public');
         $prod->path = $path;
         $prod->save();
+        return redirect('home');
+    }
+
+    public function delete($id){
+        DB::table('furnitures')->where('id', $id)->delete();
         return redirect('home');
     }
 
@@ -55,7 +60,7 @@ class ProductController extends Controller
 
         
         $prod->save();
-        return redirect()->back()->with('sukses','product data has been uploaded');
+        return redirect('home');
     }
 }
                                 

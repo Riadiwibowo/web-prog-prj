@@ -18,7 +18,8 @@ class Admin
     public function handle(Request $request, Closure $next, $role)
     {
         // dd(Auth()->user()->role, $role);
-        if(Auth()->user() && Auth()->user()->role == $role){
+       
+        if(Auth()->user() && Auth()->user()->role === $role){
             return $next($request);
         }
 

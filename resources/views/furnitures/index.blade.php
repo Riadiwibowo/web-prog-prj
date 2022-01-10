@@ -28,10 +28,13 @@
 
                     @else
                     {{-- bagian middleware button untuk admin --}}
-                    @if (Auth::user()->role=='1')
+                    @if (Auth::user()->role=='admin')
                     <div class="btn-admin">
                         <button class="btn-updt"><a href="{{ url('update', $p->id) }}">Update</a></button>
-                        <button class="btn-dlt">Delete</button>                                 
+                        <form action="{{ url('delete', $p->id) }}" method="POST" enctype="multipart/form-data" class="d-inline"> 
+                            @csrf
+                            <button class="btn-dlt">Delete</button>
+                        </form>                               
                     </div>
                     {{-- bagian middleware button untuk pengunjung member --}}
                     @else

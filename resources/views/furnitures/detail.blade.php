@@ -3,9 +3,6 @@
 <div class="text-center">
     <h3>{{$pr->name}}</h3>
 </div>
-
-
-
 <div class="row justify-content-center">
     <div class="col-md-5">
         <div class="card mb-3" style="max-width: 540px;">
@@ -46,15 +43,18 @@
                 </div>    
             </div>
             <div class="text-center">
-                <button class="btn-previous">Previous</button>
+                <button class="btn-previous"><a href="{{ url()->previous() }}">Previous</a> </button>
                 @guest
                 <button class="btn-add">Add To Cart</button>
             </div>
                 @else
                 @auth  
-                @if (Auth::user()->role=='1')
+                @if (Auth::user()->role=='admin')
                 <button class="btn-updt"><a href="{{ url('update', $pr->id) }}">Update</a></button>
-                <button class="btn-dlt">Delete</button>
+                <form action="{{ url('delete', $pr->id) }}" method="POST" enctype="multipart/form-data" class="d-inline"> 
+                    @csrf
+                    <button class="btn-dlt">Delete</button>
+                </form>
             </div>
                 @else
                 <button class="btn-add">Add To Cart</button>

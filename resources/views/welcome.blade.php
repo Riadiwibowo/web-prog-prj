@@ -24,7 +24,9 @@
 
     @endforeach   
     @else
-        <td>No Product Founds</td>
+    <div class="text-center">
+        <h1>No Product Founds</h1>
+    </div>
     @endif    
 </div>
 @endsection
