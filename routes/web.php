@@ -35,11 +35,11 @@ Route::get('/', [ViewController::class, 'index']);
 //untuk member yang sudah login
 Route::middleware(['auth'])->group(function(){
     // Route::get('/profile/{name}',[HomeController::class, 'profile']);
-    
-});
-Route::get('/profile/{id}',[UserController::class, 'profile']);
+    Route::get('/profile/{id}',[UserController::class, 'profile']);
     Route::get('/update/profile',[UserController::class, 'updateCheck']);
     Route::post('/update/profile', [UserController::class, 'update'])->name('profile.update');
+});
+    
     
 //untuk member yang sudah login dan memiliki role ('admin')
 Route::middleware(['auth'])->group(function(){

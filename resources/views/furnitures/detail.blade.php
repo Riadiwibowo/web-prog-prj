@@ -10,7 +10,6 @@
                 <div class="col-md-4">
                     <img src={{Storage::url( $pr->path)}} alt="1" class="img-fluid"> 
                 </div>
-                
                 <div class="col-md-8">
                     <table class="table">
                         <tbody>
