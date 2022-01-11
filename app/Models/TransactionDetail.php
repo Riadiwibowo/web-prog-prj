@@ -8,12 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class TransactionDetail extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+    public $table = "transactiondetail";
 
     public function product(){
-        return $this->belongsTo(product::class);
+        return $this->belongsTo(Product::class,'furniture_id','id');
     }
 
     public function transaction(){
-        return $this->belongsTo(transaction::class);
+        return $this->belongsTo(Transaction::class,'transaction_id','id');
     }
 }

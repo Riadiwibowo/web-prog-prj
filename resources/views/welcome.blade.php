@@ -15,8 +15,10 @@
                     <h5 class="card-title"> {{ $p->name }} </h5>
                     <p class="card-text"> {{ $p->price }} </p>
                     <div class="btn-admin">
-                        <button class="btn-add">Add To Cart</button>
-                        
+                        <form action="{{ url('cart') }}/{{$p->id}}" method="Post" enctype="multipart/form-data" class="d-inline"> 
+                            @csrf
+                            <button class="btn-add">Add To Cart</button>
+                        </form>
                     </div>
                 </div>
             </div>

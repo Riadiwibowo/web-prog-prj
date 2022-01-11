@@ -22,10 +22,12 @@
                     {{-- bagian middleware button untuk pengunjung non-member --}}
                     @guest 
                     <div class="btn-admin">
-                        <button class="btn-add">Add To Cart</button>
+                        <form action="{{ url('cart') }}/{{$p->id}}" method="Post" enctype="multipart/form-data" class="d-inline"> 
+                            @csrf
+                            <button class="btn-add">Add To Cart</button>
+                        </form>
                         
                     </div>
-
                     @else
                     {{-- bagian middleware button untuk admin --}}
                     @if (Auth::user()->role=='admin')
@@ -39,7 +41,10 @@
                     {{-- bagian middleware button untuk pengunjung member --}}
                     @else
                     <div class="btn-admin">
-                        <button class="btn-add">Add To Cart</button>
+                        <form action="{{ url('cart') }}/{{$p->id}}" method="Post" enctype="multipart/form-data" class="d-inline"> 
+                            @csrf
+                            <button class="btn-add">Add To Cart</button>
+                        </form>
                     </div>
                     @endif
                     @endguest

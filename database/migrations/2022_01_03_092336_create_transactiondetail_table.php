@@ -15,10 +15,12 @@ class CreateTransactiondetailTable extends Migration
     {
         Schema::create('transactiondetail', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('transaction_id');
-            $table->foreignId('furniture_id');
+            $table->foreignId('transaction_id')->references('id')->on('transaction');;
+            $table->foreignId('furniture_id')->references('id')->on('furnitures');;
             $table->integer('totalqty');
             $table->integer('totalprice');
+            $table->string('method');
+            $table->integer('card_number');
             $table->timestamps();
         });
     }

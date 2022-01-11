@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -38,8 +39,13 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/profile/{id}',[UserController::class, 'profile']);
     Route::get('/update/profile',[UserController::class, 'updateCheck']);
     Route::post('/update/profile', [UserController::class, 'update'])->name('profile.update');
+    // Route::get('/cart', [CartController::class, 'showcart']);
+    Route::get('/cart/{id}', [CartController::class, 'showcart'])->name('cart.index');
+    Route::post('/cart/{id}', [CartController::class, 'store'])->name('cart.store');
+    Route::post('/cartdecre/{id}', [CartController::class, 'storedecre'])->name('cart.storedecre');
+    // Route::post('/cart/{id}', [CartController::class, 'storeplus'])->name('cart.storerequest');
 });
-    
+
     
 //untuk member yang sudah login dan memiliki role ('admin')
 Route::middleware(['auth'])->group(function(){

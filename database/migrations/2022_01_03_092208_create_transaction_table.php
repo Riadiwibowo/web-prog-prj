@@ -15,7 +15,7 @@ class CreateTransactionTable extends Migration
     {
         Schema::create('transaction', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->references('id')->on('users');;
             $table->date('transactiondate');
             $table->integer('totalprice');
             $table->timestamps();

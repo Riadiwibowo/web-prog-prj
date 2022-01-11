@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Dotenv\Exception\ValidationException;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException as ValidationValidationException;
 
 class UserController extends Controller
 {
+    use AuthenticatesUsers;
     public function profile()
     {$users = User::find( Auth::user()->id);
         // $users = User::where( Auth::user()->id)->first(); 
@@ -17,8 +22,6 @@ class UserController extends Controller
 
     //masih harus diubah niel 
     public function updateCheck(){
-       
-        
         if(Auth::user()){
             $users = User::find( Auth::user()->id);
             
@@ -36,32 +39,23 @@ class UserController extends Controller
         }
         
     }
+        public function update(Request $request){
 
-    //masih harus diubah niel
-    public function update(Request $request){
-        // $users = User::where('name', Auth::user()->name)->first();
-        // $users = User::findorfail($id);
-        $user = User::find($request->get(Auth::user()->id) );
-        dd($request);
-        if(Auth::user()){
-            dd('suk');
-            // $validate = $request->validate([
-            //     'name' => ['required', 'string', 'max:255'],
-            //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            //     'password' => ['required', 'string', 'min:5','max:20', 'confirmed'],
-            // ]);
-            $user->name = $request['name'];
-            dd(Auth::user());
-            $user->email = $request['email'];
-            $user->password = $request['password'];
-            $user->save();
-            
-            return redirect('home');
-        }else{
-        
-            return redirect()->back();
+            $user = User::find(Auth::user()->id);
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required'],
+            ]);
+            $user->name = $request->name;
+            $user->email  = $request->email;
+            if(!Hash::check($request->password, auth()->user()->password)){
+                return back()->with('messages','sadsa');
+            }else{
+                
+                $user->save();
+                return redirect('home');
+            }
+  
         }
-        
-        
-    }
 }

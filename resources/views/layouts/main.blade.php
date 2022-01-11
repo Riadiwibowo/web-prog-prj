@@ -99,7 +99,7 @@
             </li>
             @else
             <li class="nav-item">
-                <a class="nav-link" href="/home">Cart</a>
+                <a class="nav-link" href="{{url('cart')}}/{{Auth::user()->id}}">Cart</a>
             </li>
             @endif
             <li class="nav-item dropdown">

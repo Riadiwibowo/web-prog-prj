@@ -12,8 +12,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     public $timestamps = false;
-    public $table = "furnitures";
-
+    public $table = "users";
+   
     /**
      * The attributes that are mass assignable.
      *
@@ -45,10 +45,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function furniture(){
-        return $this->belongsTo(Product::class);
-    }
+    // public function furniture(){
+    //     return $this->belongsTo(Product::class,);
+    // }
     public function transaction(){
-        return $this->hasMany(transaction::class);
+        return $this->hasMany(transaction::class,'user_id','id');
     }
+
 }
