@@ -12,8 +12,9 @@ class ProductController extends Controller
 {
     public function index(){
         return view('furnitures.add');
-    }
+    }   
 
+    //cek dan mendapatkan id dari produk sehingga kita bisa update data yang sesuai (berdasarkan id)
     public function updateCheck($id){
         $prod = Product::findorfail($id);
         return view('furnitures.update', ['pr' => $prod]);
@@ -42,6 +43,7 @@ class ProductController extends Controller
             'type' => 'required',
             'color' => 'required',
         ]);
+        
         $error = '';
         if ($validator->fails()){
             $error = 'All data must be filled in';
@@ -60,6 +62,11 @@ class ProductController extends Controller
 
         $prod->save();
         return redirect('home');
+    }
+
+    public function search(Request $request){
+        $prod = Product::where('name', 'like', '%' . $request->finding . '%')->paginate(4);
+        return view('furnitures.index', ['pr'=>$prod]);
     }
 }
                                 

@@ -16,7 +16,6 @@ class TransactionController extends Controller
     public function index($id)
     {
         $product = Product::where('id', $id)->first(); 
-        return view('viewDetail', ['product' => $product]);
-        
+        return view('viewDetail', ['product' => $product]); 
     }
 }

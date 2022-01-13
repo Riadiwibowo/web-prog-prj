@@ -29,13 +29,10 @@
                         
                     </div>
 
-                    
                     <div class="text-center">
                         <button class="btn">Update Profile</button>
                     </div>
                     
-            
-
                 </form>
             </div>
         </div>
@@ -47,7 +44,6 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header text-center">{{ __('Update Profile') }}</div>
-
                 <div class="card-body">
                     <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                         @csrf

@@ -25,8 +25,8 @@ class CartController extends Controller
             'transaction' => $cek_tr,
             'transactiondetail' => $transaction_detail,
         ]);
-
     }
+    
     public function store(Request $request, $id){
         $prod = Product::where('id', $id)->first();
         //UNTUK TRANSACTION
@@ -70,12 +70,10 @@ class CartController extends Controller
 
         //validasi untuk mengupdate totalprice pada table transaction berdasarkan user_id
         $transaction = Transaction::where('user_id', Auth::user()->id)->first();
-        $transaction->totalprice = $transaction->totalprice +   $prod->price  ;
+        $transaction->totalprice = $transaction->totalprice + $prod->price  ;
         $transaction->update();
         return redirect()->back()->with('messages','item succesfully added');
     }
-
-    
 
     public function storedecre(Request $request, $id){
         $prod = Product::where('id', $id)->first();

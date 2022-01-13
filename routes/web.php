@@ -22,13 +22,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-
-
-
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
 
 //untuk member yang belum login
 Route::get('/', [ViewController::class, 'index']);
@@ -51,8 +47,8 @@ Route::middleware(['auth'])->group(function(){
 Route::middleware(['auth'])->group(function(){
     Route::middleware(['admin:admin'])->group(function(){
         Route::get('/add',[ProductController::class, 'index']);
-        Route::get('/update/{id}',[ProductController::class, 'updateCheck']);
         Route::post('/add', [ProductController::class, 'upload']);
+        Route::get('/update/{id}',[ProductController::class, 'updateCheck']);
         Route::post('/update/{id}', [ProductController::class, 'update']);
         Route::post('/delete/{id}', [ProductController::class, 'delete']);
     });
@@ -60,7 +56,13 @@ Route::middleware(['auth'])->group(function(){
 
 //routes untuk view dan detail dari furnitures
 Route::get('/furnitures', [ViewController::class, 'index1']);
-Route::get('/furnitures/{id}', [viewDetailController::class, 'index']);     
+Route::get('/furnitures/{id}', [viewDetailController::class, 'index']);    
+Route::post('/search', [ProductController::class, 'search']);
+Route::get('/search', [ProductController::class, 'search']);
+
+
+
+
 
 
 

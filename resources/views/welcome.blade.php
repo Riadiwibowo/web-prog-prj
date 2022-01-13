@@ -1,6 +1,6 @@
 @extends('layouts/main')
 @section('container')
-<div class="text-center">
+<div class="text-center text-white">
     <h3>Welcome to JH Furniture</h3>
 </div>
 <div class="row justify-content-center">
