@@ -1,8 +1,8 @@
 @extends('layouts.main')
 @section('container')
 
-<div class="text-center">
-    <h3>memekk</h3>
+<div class="text-center text-white">
+    <h3>Check-Out</h3>
 </div>
 
 <div class="row justify-content-center">

@@ -6,6 +6,7 @@
 </div>
 
 
+
 <div class="row justify-content-center">
     <div class="col-md-5">
         @foreach ($transactiondetail as $tr)
@@ -25,14 +26,14 @@
                             <tr>
                                 <td>Transaction Date</td>
                                 <td>:</td>
-                                <td>{{$tr->totalqty}}</td>
+                                <td>{{$tr->transaction->transactiondate}}</td>
                             </tr>
                              <tr>
                                 <td>Method </td>
                                 <td>:</td>
                                 <td>{{$tr->method}}</td>
                             </tr>
-                            {{--
+                            
                             <tr>
                                 <td>Card Number</td>
                                 <td>:</td>
@@ -42,7 +43,7 @@
                                 <td>User's Name</td>
                                 <td>:</td>
                                 <td>{{$tr->transaction->User->name}}</td>
-                            </tr> --}}
+                            </tr>
                         </tbody>
                         
                     </table>
@@ -58,14 +59,14 @@
                           </tr>
                         </thead>
                     
-                        {{-- <tbody>
+                        <tbody>
                             <tr>
                                 <th>{{$tr->Product->name}}</th>
                                 <th>{{$tr->Product->price}}</th>
                                 <th>{{$tr->totalqty}}</th>
                                 <th>{{$tr->totalprice}}</th>
                             </tr>
-                        </tbody> --}}
+                        </tbody>
                     </table>
                     
                 </div>
