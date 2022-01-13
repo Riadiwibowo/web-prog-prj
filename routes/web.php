@@ -23,6 +23,10 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+<<<<<<< HEAD
+=======
+
+>>>>>>> dd56aec3bab2d9ea165b6e45270ab9a7fbd6b40a
 Auth::routes();
 //route untuk guest
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -55,20 +59,30 @@ Route::middleware(['auth'])->group(function(){
 Route::middleware(['auth'])->group(function(){
     Route::middleware(['admin:admin'])->group(function(){
         Route::get('/add',[ProductController::class, 'index']);
-        Route::get('/update/{id}',[ProductController::class, 'updateCheck']);
         Route::post('/add', [ProductController::class, 'upload']);
+        Route::get('/update/{id}',[ProductController::class, 'updateCheck']);
         Route::post('/update/{id}', [ProductController::class, 'update']);
         Route::post('/delete/{id}', [ProductController::class, 'delete']);
     });
 });
 
 //routes untuk view dan detail dari furnitures
+<<<<<<< HEAD
 Route::get('/furnitures', [ViewController::class, 'furnituresuser']);
 Route::get('/furnitures/{id}', [ViewController::class, 'viewdetail']);     
 Route::get('/transaction/{id}', [TransactionController::class, 'viewTransaction']);     
 Route::post('/search', [ProductController::class, 'search']);
 Route::get('/search', [ProductController::class, 'search']);
      
+=======
+Route::get('/furnitures', [ViewController::class, 'index1']);
+Route::get('/furnitures/{id}', [viewDetailController::class, 'index']);    
+Route::post('/search', [ProductController::class, 'search']);
+Route::get('/search', [ProductController::class, 'search']);
+
+
+
+>>>>>>> dd56aec3bab2d9ea165b6e45270ab9a7fbd6b40a
 
 
 

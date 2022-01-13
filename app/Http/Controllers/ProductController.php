@@ -16,7 +16,7 @@ class ProductController extends Controller
    
     public function index(){
         return view('furnitures.add');
-    }
+    }   
 
     public function showcart(){
         $cek_tr = Transaction::where('user_id', Auth::user()->id)->first();
@@ -55,6 +55,7 @@ class ProductController extends Controller
             'type' => 'required',
             'color' => 'required',
         ]);
+        
         $error = '';
         if ($validator->fails()){
             $error = 'All data must be filled in';
