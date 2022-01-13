@@ -10,7 +10,7 @@ class TransactionDetail extends Model
     use HasFactory;
     public $timestamps = false;
     public $table = "transactiondetail";
-
+    protected $guarded = ['id'];
     public function product(){
         return $this->belongsTo(Product::class,'furniture_id','id');
     }

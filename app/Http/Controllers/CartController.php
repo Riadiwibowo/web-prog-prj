@@ -18,22 +18,25 @@ class CartController extends Controller
         $this->middleware('auth');
     }
 
-    public function showcart(){
-        $cek_tr = Transaction::where('user_id', Auth::user()->id)->first();
-        $transaction_detail = TransactionDetail::where('transaction_id', $cek_tr->id)->get();
-        return view('cart.index',[
-            'transaction' => $cek_tr,
-            'transactiondetail' => $transaction_detail,
-        ]);
-
+    public function showcart($id){
+        $cek_tr = Transaction::where('user_id', Auth::user()->id)->where('status','unpaid')->first();
+        
+        if(!empty($cek_tr)){
+            $transaction_detail = TransactionDetail::where('transaction_id', $cek_tr->id)->get();
+            return view('cart.index',[
+                'transaction' => $cek_tr,
+                'transactiondetail' => $transaction_detail,
+            ]);
+        }
     }
+
     public function store(Request $request, $id){
         $prod = Product::where('id', $id)->first();
         //UNTUK TRANSACTION
         //validasi apakah transaction tersebut sudah ada berdasarkan user_id, 
         //jika tidak maka dibuat transaksi dengan id yang baru, 
         //jika iya maka transaksi tetap sama (yang bertambah hanya transactiondetail)
-        $cek = Transaction::where('user_id', Auth::user()->id)->first();
+        $cek = Transaction::where('user_id', Auth::user()->id)->where('status','unpaid')->first();
         if(empty($cek)){
             $transaction = new Transaction;
             $transaction->user_id = Auth::user()->id;
@@ -42,7 +45,7 @@ class CartController extends Controller
             $transaction->save();
         }
         //validasi untuk transaksi yang baru saja di save
-        $new_transaction = Transaction::where('user_id', Auth::user()->id)->first();
+        $new_transaction = Transaction::where('user_id', Auth::user()->id)->where('status','unpaid')->first();
 
 
         //UNTUK TRANSACTION DETAIL
@@ -69,13 +72,12 @@ class CartController extends Controller
         }   
 
         //validasi untuk mengupdate totalprice pada table transaction berdasarkan user_id
-        $transaction = Transaction::where('user_id', Auth::user()->id)->first();
-        $transaction->totalprice = $transaction->totalprice +   $prod->price  ;
+        $transaction = Transaction::where('user_id', Auth::user()->id)->where('status','unpaid')->first();
+        $transaction->totalprice = $transaction->totalprice + $prod->price  ;
         $transaction->update();
+
         return redirect()->back()->with('messages','item succesfully added');
     }
-
-    
 
     public function storedecre(Request $request, $id){
         $prod = Product::where('id', $id)->first();
@@ -83,7 +85,7 @@ class CartController extends Controller
         //validasi apakah transaction tersebut sudah ada berdasarkan user_id, 
         //jika tidak maka dibuat transaksi dengan id yang baru, 
         //jika iya maka transaksi tetap sama (yang bertambah hanya transactiondetail)
-        $cek = Transaction::where('user_id', Auth::user()->id)->first();
+        $cek = Transaction::where('user_id', Auth::user()->id)->where('status','unpaid')->first();
         if(empty($cek)){
             $transaction = new Transaction;
             $transaction->user_id = Auth::user()->id;
@@ -92,7 +94,7 @@ class CartController extends Controller
             $transaction->save();
         }
         //validasi untuk transaksi yang baru saja di save
-        $new_transaction = Transaction::where('user_id', Auth::user()->id)->first();
+        $new_transaction = Transaction::where('user_id', Auth::user()->id)->where('status','unpaid')->first();
 
 
         //UNTUK TRANSACTION DETAIL
@@ -100,7 +102,7 @@ class CartController extends Controller
         $new_transactiondetail = TransactionDetail::where('furniture_id', $prod->id)->where('transaction_id', $new_transaction->id)->first();
         if(empty($new_transactiondetail)){
             //validasi untuk mengecek apakah terdapat furniture_id yanng duplikat, jika tidak maka akan dibuat transaksi baru
-            return redirect()->back()->with('messages','ga ada barang');
+            return redirect()->back()->with('messages','No Item ');
         }else{
             //validasi apakah transaction detail memiliki furniture_id yang duplikat, jika iya maka total qty akan ditambah (hanya untuk menampilkan di cart)
             $transaction_detail = TransactionDetail::where('furniture_id', $prod->id)->where('transaction_id', $new_transaction->id)->first();
@@ -111,13 +113,10 @@ class CartController extends Controller
         }   
 
         //validasi untuk mengupdate totalprice pada table transaction berdasarkan user_id
-        $transaction = Transaction::where('user_id', Auth::user()->id)->first();
+        $transaction = Transaction::where('user_id', Auth::user()->id)->where('status','unpaid')->first();
         $transaction->totalprice = $transaction->totalprice -   $prod->price  ;
         $transaction->update();
-    
-
         return redirect('cart/{id}')->with('messages','item succesfully added');
     }
-    
 
 }

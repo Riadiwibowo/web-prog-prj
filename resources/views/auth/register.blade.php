@@ -38,7 +38,62 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
+                            <div class="col-md-6">
+                                <input id="address" type="address" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address">
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <label for="gender" class= "col-md-4 col-form-label text-md-end">{{ __('Gender') }}</label>
+                        <div class="form-check form-check-inline" >
+                            <input class="form-check-input" type="radio" name="gender" value="male">
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" value="female">
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>
+                            </div>
+
+                        </div>
+
+                        {{-- <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Gender') }}</label>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input id="male" type="radio" class="form-check-input @error('gender') is-invalid @enderror" name="gender" value="Male" >
+                                    <label class="form-check-label" for="male">Male</label>
+                                </div>
+                                <div class="form-check">
+                                    <input id="female" type="radio" class="form-check-input @error('gender') is-invalid @enderror" name="gender" value="Female" >
+                                    <label class="form-check-label" for="female">Female</label>
+                                </div>
+                                @error('gender')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div> --}}
+
+                            {{-- <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="PaymentMethod" id="Credit" value="Credit">
+                                <label class="form-check-label" for="Credit">Credit</label>
+                            </div>
+                            
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="PaymentMethod" id="Debit" value="Debit">
+                                <label class="form-check-label" for="Debit">Debit</label>
+                            </div> --}}
+                        {{-- </div> --}}
+                        
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 

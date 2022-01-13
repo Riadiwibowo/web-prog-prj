@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('container')
-<div class="text-center">
+<div class="text-center text-white">
     <h3>{{$pr->name}}</h3>
 </div>
 <div class="row justify-content-center">
@@ -42,21 +42,24 @@
                 </div>    
             </div>
             <div class="text-center">
-                <button class="btn-previous"><a href="{{ url()->previous() }}">Previous</a> </button>
+                <button class="btn-previous"><a class="text-dark text-decoration-none" href="{{ url()->previous() }}">Previous</a> </button>
                 @guest
                 <button class="btn-add">Add To Cart</button>
             </div>
                 @else
                 @auth  
                 @if (Auth::user()->role=='admin')
-                <button class="btn-updt"><a href="{{ url('update', $pr->id) }}">Update</a></button>
+                <button class="btn-updt"><a class="text-dark text-decoration-none" href="{{ url('update', $pr->id) }}">Update</a></button>
                 <form action="{{ url('delete', $pr->id) }}" method="POST" enctype="multipart/form-data" class="d-inline"> 
                     @csrf
                     <button class="btn-dlt">Delete</button>
                 </form>
             </div>
                 @else
-                <button class="btn-add">Add To Cart</button>
+                <form action="{{ url('cart') }}/{{$pr->id}}" method="Post" enctype="multipart/form-data" class="d-inline"> 
+                    @csrf
+                    <button class="btn-add">Add To Cart</button>
+                </form>
             </div>
                 @endif
                 @endauth  
@@ -65,5 +68,4 @@
     </div> 
 </div>
 @endsection
-
 

@@ -22,6 +22,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'address',
+        'gender',
         'password',
         'role'
     ];
@@ -45,9 +47,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // public function furniture(){
-    //     return $this->belongsTo(Product::class,);
-    // }
+    public function furniture(){
+        return $this->belongsTo(Product::class,'furniture_id','id');
+    }
     public function transaction(){
         return $this->hasMany(transaction::class,'user_id','id');
     }

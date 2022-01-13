@@ -13,7 +13,7 @@ class Transaction extends Model
     protected $guarded = ['id'];
 
     public function user(){
-        return $this->belongsTo(User::class,'user_id','id');
+        return $this->belongsTo(User::class,'user_id', 'id');
     }
     public function transactiondetail(){
         return $this->hasMany(TransactionDetail::class,'transaction_id','id');

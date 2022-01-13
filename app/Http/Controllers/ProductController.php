@@ -3,17 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Transaction;
+use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Unique;
 
 class ProductController extends Controller
 {
+   
     public function index(){
         return view('furnitures.add');
     }
 
+    public function showcart(){
+        $cek_tr = Transaction::where('user_id', Auth::user()->id)->first();
+        $transaction_detail = TransactionDetail::where('transaction_id', $cek_tr->id)->get();
+        return view('cart.index',[
+            'transaction' => $cek_tr,
+            'transactiondetail' => $transaction_detail,
+        ]);
+
+    }
     public function updateCheck($id){
         $prod = Product::findorfail($id);
         return view('furnitures.update', ['pr' => $prod]);
@@ -60,6 +73,11 @@ class ProductController extends Controller
 
         $prod->save();
         return redirect('home');
+    }
+
+    public function search(Request $request){
+        $prod = Product::where('name', 'like', '%' . $request->finding . '%')->paginate(4);
+        return view('furnitures.index', ['pr'=>$prod]);
     }
 }
                                 

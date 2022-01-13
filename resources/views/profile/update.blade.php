@@ -1,58 +1,18 @@
 @extends('layouts.main')
 @section('container')
-
-{{-- <div class="row justify-content-center">
-    <div class="col-md-5">
-        <div class="card ">
-            <div class="card-body">
-                <form action="{{ url('update') }}" method="POST" enctype="multipart/form-data" class="align-items-center"> 
-                    @csrf
-                    <div class="form-group row"> 
-                        <label for="name" class="col-sm-2 col-form-label">Name</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="name" placeholder="Enter furniture's name" name="name" value="{{Auth::user()->name}}">
-                        </div>
-                        
-                    </div>
-                    <div class="form-group row"> 
-                        <label for="name" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="name" placeholder="Enter furniture's name" name="name" value="{{Auth::user()->email}}">
-                        </div>
-                        
-                    </div>
-                    <div class="form-group row"> 
-                        <label for="name" class="col-sm-2 col-form-label">password</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="name" placeholder="Enter furniture's name" name="name" value="">
-                        </div>
-                        
-                    </div>
-
-                    
-                    <div class="text-center">
-                        <button class="btn">Update Profile</button>
-                    </div>
-                    
-            
-
-                </form>
-            </div>
-        </div>
-    </div> 
-</div> --}}
+<div class="text-center">
+    <h3>{{ __('Update Profile') }}</h3>
+</div>
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center">{{ __('Update Profile') }}</div>
-
                 <div class="card-body">
                     <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Full Name') }}</label>
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{Auth::user()->name}}" required autocomplete="name" autofocus>
 
@@ -77,6 +37,20 @@
                                 @enderror
                             </div>
                         </div>
+                        @if (Auth::user()->role == 'member')
+                        <div class="row mb-3">
+                            <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
+                            <div class="col-md-6">
+                                <input id="address" type="address" class="form-control @error('address') is-invalid @enderror" name="addess" value="{{Auth::user()->address}}" required autocomplete="address">
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        @endif
+                        
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>

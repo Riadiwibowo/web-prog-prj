@@ -17,6 +17,7 @@ class CreateTransactionTable extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users');;
             $table->date('transactiondate');
+            $table->string('status')->default('unpaid');
             $table->integer('totalprice');
             $table->timestamps();
         });

@@ -44,12 +44,16 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         @guest
-        <a class="navbar-brand" href="/ ">Project-Store</a>
+        <a href="/">
+            <img src="{{url('/assets/logo.jpg')}}" alt="logo" height="50" width="100">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        @else
-        <a class="navbar-brand" href="/home ">Project-Store</a>
+        @else 
+        <a href="/home">
+            <img src="{{url('/assets/logo.jpg')}}" alt="logo" height="50" width="100">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -57,10 +61,8 @@
         
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
-                
             <!-- Authentication Links -->
             @guest
                 <li class="nav-item">
@@ -121,21 +123,22 @@
             </li>
             @endauth
             @endguest
-            
             </ul>
         </div>
     </div>
 </nav>
 
-<body>
+<div class="h-100">
     <div class="container mt-4" >
         @yield('container')
     </div>
-</body>
-<footer class="footer-area footer--light bg-primary d-flex justify-content-center text-white flex-shrink-0">
-    <p>
-        Place sticky footer content here.
-    </p>
-</footer>
-</html>
+</div>
 
+<footer class="footer-area footer-light bg-primary d-flex justify-content-center text-white">
+    <h6 class="text-center">
+        Copyright &copy; Bluejack 20-1. 
+        <br>
+        Daniel Christiansen - Riadi Wibowo
+    </h6>
+    </footer>
+</html>
