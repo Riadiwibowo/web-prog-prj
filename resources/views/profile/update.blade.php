@@ -1,58 +1,13 @@
 @extends('layouts.main')
 @section('container')
-<<<<<<< HEAD
 <div class="text-center">
     <h3>{{ __('Update Profile') }}</h3>
 </div>
-=======
-
-{{-- <div class="row justify-content-center">
-    <div class="col-md-5">
-        <div class="card ">
-            <div class="card-body">
-                <form action="{{ url('update') }}" method="POST" enctype="multipart/form-data" class="align-items-center"> 
-                    @csrf
-                    <div class="form-group row"> 
-                        <label for="name" class="col-sm-2 col-form-label">Name</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="name" placeholder="Enter furniture's name" name="name" value="{{Auth::user()->name}}">
-                        </div>
-                        
-                    </div>
-                    <div class="form-group row"> 
-                        <label for="name" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="name" placeholder="Enter furniture's name" name="name" value="{{Auth::user()->email}}">
-                        </div>
-                        
-                    </div>
-                    <div class="form-group row"> 
-                        <label for="name" class="col-sm-2 col-form-label">password</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="name" placeholder="Enter furniture's name" name="name" value="">
-                        </div>
-                        
-                    </div>
-
-                    <div class="text-center">
-                        <button class="btn">Update Profile</button>
-                    </div>
-                    
-                </form>
-            </div>
-        </div>
-    </div> 
-</div> --}}
->>>>>>> dd56aec3bab2d9ea165b6e45270ab9a7fbd6b40a
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-<<<<<<< HEAD
-=======
-                <div class="card-header text-center">{{ __('Update Profile') }}</div>
->>>>>>> dd56aec3bab2d9ea165b6e45270ab9a7fbd6b40a
                 <div class="card-body">
                     <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                         @csrf
