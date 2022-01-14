@@ -34,7 +34,6 @@ class CheckoutController extends Controller
     }
 
     public function checkout(Request $request){
-        
         $transaction = Transaction::where('user_id' , Auth::user()->id)->where('status', 'unpaid')->first();
         $trdetail = TransactionDetail::where('transaction_id', $transaction->id)->first();
 

@@ -29,5 +29,4 @@ class ViewController extends Controller
         return view('furnitures.index', ['pr' => $pagin]);
     }
 
- 
 }

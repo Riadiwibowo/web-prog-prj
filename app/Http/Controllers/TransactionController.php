@@ -15,8 +15,6 @@ class TransactionController extends Controller
         $this->middleware('auth');
     }
 
-
-
 public function viewTransaction($id){
     $cek_tr = Transaction::where('user_id', Auth::user()->id)->where('status','paid')->first();
    

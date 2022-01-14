@@ -1,11 +1,9 @@
 @extends('layouts.main')
 @section('container')
 
-<div class="text-center">
+<div class="text-center text-white">
     <h3>Transaction History</h3> 
 </div>
-
-
 
 <div class="row justify-content-center">
     <div class="col-md-5">

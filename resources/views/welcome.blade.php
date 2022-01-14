@@ -23,7 +23,6 @@
                 </div>
             </div>
         </div>
-
     @endforeach   
     @else
     <div class="text-center">

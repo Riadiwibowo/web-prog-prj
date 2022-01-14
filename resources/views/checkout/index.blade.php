@@ -5,7 +5,7 @@
     <h3>Check-Out</h3>
 </div>
 
-<div class="row justify-content-center">
+<div class="row justify-content-center mb-3">
     <div class="col-md-5"style="width: 100%;">
         @if (!empty($transaction))
         <div class="card" >
@@ -31,38 +31,29 @@
                 <div class="row justify-content-center">
                     <div class="col-md-5">
                         <div class="card-body">
-                            
                                 <div class="form-group">
                                     <label for="PaymentMethod">Payment Method</label>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="PaymentMethod" id="Credit" value="Credit">
                                         <label class="form-check-label" for="Credit">Credit</label>
                                     </div>
-                                    
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="PaymentMethod" id="Debit" value="Debit">
                                         <label class="form-check-label" for="Debit">Debit</label>
                                     </div>
                                 </div>
-                                    
-
-                                </h6>
-                                <div class="form-group row">
+                                <div class="form-group row col-20">
                                     <label for="name" class="col-sm-2 col-form-label">Card Number</label>
                                     <div class="col-sm-10">
                                         <input type="number" class="form-control" id="CardNumber" placeholder="Enter Card Number" name="CardNumber">
                                     </div>                                   
                                 </div>
-                            
-                            
                         </div>
                     </div> 
                 </div>
                 
                 <div class="text-center">
-                    
                         <button class="btn-add"> Checkout</button>
-                    
                 </div>
             </form>
             
@@ -74,7 +65,4 @@
         @endif
     </div> 
 </div>
-
-
-
 @endsection

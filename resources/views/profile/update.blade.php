@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('container')
-<div class="text-center">
+<div class="text-center text-white">
     <h3>{{ __('Update Profile') }}</h3>
 </div>
 
@@ -51,7 +51,6 @@
                         </div>
                         @endif
                         
-
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
@@ -65,8 +64,6 @@
                                 @enderror
                             </div>
                         </div>
-
-
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">

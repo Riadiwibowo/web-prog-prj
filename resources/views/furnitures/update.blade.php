@@ -18,6 +18,13 @@
                     </div>
 
                     <div class="form-group row pt-2">
+                        <label for="price" class="col-sm-2 col-form-label">Price</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="price" placeholder="Enter furniture's price" name="price">
+                        </div> 
+                    </div>
+
+                    <div class="form-group row pt-2">
                         <label for="type" class="col-sm-2 col-form-label">Type</label>
                         <div class="d-grid gap-2 col-10">
                             <select class="form-select" id="type">

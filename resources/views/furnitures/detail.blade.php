@@ -44,7 +44,10 @@
             <div class="text-center">
                 <button class="btn-previous"><a class="text-dark text-decoration-none" href="{{ url()->previous() }}">Previous</a> </button>
                 @guest
-                <button class="btn-add">Add To Cart</button>
+                <form action="{{ url('cart') }}/{{$pr->id}}" method="Post" enctype="multipart/form-data" class="d-inline"> 
+                    @csrf
+                    <button class="btn-add">Add To Cart</button>
+                </form>
             </div>
                 @else
                 @auth  

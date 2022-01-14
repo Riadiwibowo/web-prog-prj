@@ -28,6 +28,9 @@ class CartController extends Controller
                 'transactiondetail' => $transaction_detail,
             ]);
         }
+        return view('cart.index',[
+            'transaction' => $cek_tr,
+        ]);
     }
 
     public function store(Request $request, $id){
@@ -46,7 +49,6 @@ class CartController extends Controller
         }
         //validasi untuk transaksi yang baru saja di save
         $new_transaction = Transaction::where('user_id', Auth::user()->id)->where('status','unpaid')->first();
-
 
         //UNTUK TRANSACTION DETAIL
         //validasi untuk penjumlahan transaction detail yang memiliki furniture_id yang sama 
@@ -67,7 +69,7 @@ class CartController extends Controller
             $transaction_detail = TransactionDetail::where('furniture_id', $prod->id)->where('transaction_id', $new_transaction->id)->first();
             $transaction_detail->totalqty = $transaction_detail->totalqty + 1;
             $new_transactiondetail_price = $prod->price * $transaction_detail->totalqty;
-            $transaction_detail->totalprice =   $new_transactiondetail_price;
+            $transaction_detail->totalprice = $new_transactiondetail_price;
             $transaction_detail->update();
         }   
 
